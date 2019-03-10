@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once("external.php");
+require_once("../external.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Check is a key has been set
@@ -15,21 +15,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         return;
     }
 
-    // Get api key
-    $api_key = $_GET["key"];
-
-    // Get year
-    $year = $_GET["year"];
-
-    // Get data form frc api
-    $data = gameInfo($api_key, $year);
-
-    if ($data == null){
+    // Check if team has been set
+    if(!isset($_GET["event"])){
+        echo json_encode(['success' => FALSE, 'error' => 'No Event Key Provided']);
         return;
     }
 
+    // Get data
+    $api_key = $_GET["key"];
+    $event   = $_GET["event"];
+    $year    = $_GET["year"];
+
+    // Get data form frc api
+    $data = getEvent($api_key, $year, $event)["Events"][0]["webcasts"];
+
     // Respond with status and api key
-    echo json_encode(['success' => TRUE, 'season' => $data]);
+    echo json_encode(['success' => TRUE, 'urls' => $data]);
     return;
     
 } else {

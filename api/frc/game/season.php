@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once("external.php");
+require_once("../external.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Check is a key has been set

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once('external.php');
+require_once("../external.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Check is a key has been set
@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         return;
     }
 
-    // Check if team has been set
-    if(!isset($_GET["team"])){
-        echo json_encode(['success' => FALSE, 'error' => 'No Team Provided']);
+    // Check if year has been set
+    if(!isset($_GET["year"])){
+        echo json_encode(['success' => FALSE, 'error' => 'No Year Provided']);
         return;
     }
 
@@ -19,21 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $api_key = $_GET["key"];
 
     // Get year
-    $team = $_GET["team"];
+    $year = $_GET["year"];
 
-    // Get current game year
-    $year = currentSeason($api_key);
-    $min_rookie = gameInfo($api_key, $year)["rookieStart"];
+    // Get data form frc api
+    $data = gameInfo($api_key, $year);
 
-    if ($min_rookie <= intval($team)){
-        $rookie = TRUE;
-    }else{
-        $rookie = FALSE;
+    if ($data == null){
+        return;
     }
 
-
     // Respond with status and api key
-    echo json_encode(['success' => TRUE, 'rookie' => $rookie]);
+    echo json_encode(['success' => TRUE, 'season' => $data]);
     return;
     
 } else {
