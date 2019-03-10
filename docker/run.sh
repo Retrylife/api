@@ -1,0 +1,1 @@
+screen -d -m ./start-docker.sh
