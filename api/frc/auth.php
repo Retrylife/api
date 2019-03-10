@@ -32,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Respond with status and api key
     echo json_encode(['success' => TRUE, 'key' => $api_key]);
-}else{
+    return;
+    
+} else {
     echo json_encode(['success' => FALSE, 'error' => 'Invalid Method']);
 }
 ?>
