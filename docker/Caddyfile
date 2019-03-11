@@ -1,4 +1,7 @@
+api.retrylife.ca
+
 bind 0.0.0.0
+
 root /var/www
 gzip
 
@@ -8,7 +11,7 @@ ext .php .html
 index index.php
 
 fastcgi / php:9000 php {
-	root /var/www/
+    root /var/www/
 }
 
 log stdout
