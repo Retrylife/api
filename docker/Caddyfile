@@ -1,0 +1,15 @@
+bind 0.0.0.0
+root /var/www
+gzip
+
+tls ewpratten@gmail.com
+
+ext .php .html
+index index.php
+
+fastcgi / php:9000 php {
+	root /var/www/
+}
+
+log stdout
+errors stderr
