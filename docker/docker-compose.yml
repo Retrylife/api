@@ -15,3 +15,11 @@ services:
     image: php:7-fpm
     volumes:
       - ../api:/var/www
+  # netdata:
+  #   image: netdata/netdata
+  #   ports:
+  #     - "19999:19999"
+  #   volumes:
+  #   #   - /proc:/proc
+  #   #   - /sys:/sys
+  #     - /var/run/docker.sock:/var/run/docker.sock

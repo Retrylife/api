@@ -1,11 +1,13 @@
-api.retrylife.ca
+# localhost
+# api.retrylife.ca
 
 bind 0.0.0.0
 
 root /var/www
 gzip
 
-tls ewpratten@gmail.com
+#tls ewpratten@gmail.com
+tls off
 
 ext .php .html
 index index.php
