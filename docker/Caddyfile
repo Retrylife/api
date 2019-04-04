@@ -1,12 +1,15 @@
-# localhost
+# Comment on local
 http://api.retrylife.ca
 
-#bind 0.0.0.0
+bind 0.0.0.0
 
 root /var/www
 gzip
 
+# Comment on local
 tls ewpratten@gmail.com
+
+# uncomment on local
 #tls off
 
 ext .php .html
