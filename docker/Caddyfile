@@ -1,7 +1,8 @@
 # Comment on local
-http://api.retrylife.ca
+api.retrylife.ca
 
-bind 0.0.0.0
+# uncomment on local
+# bind 0.0.0.0
 
 root /var/www
 gzip
@@ -14,6 +15,9 @@ tls ewpratten@gmail.com
 
 ext .php .html
 index index.php
+
+# cross origion
+cors
 
 fastcgi / php:9000 php {
     root /var/www/
